@@ -12,22 +12,24 @@
 
     <link rel="stylesheet" href="{{ get_url(path="main.css", trailing_slash=false) }}" />
 
-    {%- if config.generate_feeds %}{%- for feed in config.feed_filenames %}{%- if feed is containing('atom') %}
-      <link
-        rel="alternate"
-        type="application/atom+xml"
-        title="{{ config.title }} Atom Feed"
-        href="{{ get_url(path=feed, trailing_slash=false, lang=lang) | safe }}"
-      />
-    {%- endif %}
-    {%- if feed is containing('rss') %}
-      <link
-        rel="alternate"
-        type="application/rss+xml"
-        title="{{ config.title }} RSS Feed"
-        href="{{ get_url(path=feed, trailing_slash=false, lang=lang) | safe }}"
-      />
-    {%- endif %}{%- endfor %}{%- endif %}
+    {%- if config.generate_feeds %}{%- for feed in config.feed_filenames %}
+      {%- if feed is containing('atom') %}
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title="{{ config.title }} Atom Feed"
+          href="{{ get_url(path=feed, trailing_slash=false, lang=lang) | safe }}"
+        />
+      {%- endif %}
+      {%- if feed is containing('rss') %}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="{{ config.title }} RSS Feed"
+          href="{{ get_url(path=feed, trailing_slash=false, lang=lang) | safe }}"
+        />
+      {%- endif %}
+    {%- endfor %}{%- endif %}
 
     {% block extra_head %}
     {% endblock extra_head %}
@@ -67,15 +69,13 @@
         {% endblock content %}
       </main>
       <footer>
-        <p>
-          © {{ config.title }} {{ now() | date(format="%Y") }}<br />
-          Powered by <a target="_blank" href="https://getzola.org/">Zola</a>, Theme
-          <a target="_blank" href="https://github.com/zbrox/anpu-zola-theme">Anpu</a>.
-        </p>
-        <p>
-          {% block footer %}
-          {% endblock footer %}
-        </p>
+        {% block footer %}
+          <p>
+            © {{ config.title }} {{ now() | date(format="%Y") }}<br />
+            Powered by <a target="_blank" href="https://getzola.org/">Zola</a>, theme
+            <a target="_blank" href="https://github.com/jamwil/anpu-zola-theme">Anpu</a>.
+          </p>
+        {% endblock footer %}
       </footer>
     </div>
   </body>
