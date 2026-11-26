@@ -3,7 +3,7 @@ description = "A port of the Hugo Anubis theme"
 license = "MIT"
 homepage = "https://github.com/zbrox/anpu-zola-theme"
 # The minimum version of Zola required
-min_version = "0.11.0"
+min_version = "0.23.6"
 # An optional live demo URL
 demo = "https://anpu-zola-theme.netlify.app"
 

@@ -13,14 +13,13 @@ generate_feeds = true
 feed_filenames = ["atom.xml", "rss.xml"]
 
 taxonomies = [
-    {name = "tags", rss = true},
-    {name = "categories", rss = true},
+    {name = "tags", feed = true},
+    {name = "categories", feed = true},
 ]
 
-[markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
+[markdown.highlighting]
+# Enable syntax highlighting with a built-in Giallo theme
+theme = "nord"
 
 [extra]
 anpu_date_format="%e %B %Y"

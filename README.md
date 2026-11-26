@@ -6,6 +6,8 @@ This is a port of the Hugo theme [Anubis](https://github.com/Mitrichius/hugo-the
 
 ## Usage
 
+The theme requires Zola 0.23.6 or later.
+
 In order to use the theme you need to clone this repository in your `themes` folder:
 
 ```bash
@@ -26,6 +28,14 @@ taxonomies = [
     { name = "tags" },
 ]
 ```
+
+The theme's globally available Tera components are `anpu.page_info` and
+`anpu.page_listing` (both take `page` and `config`), and
+`anpu.page_pagination` (takes `paginator`).
+
+The sample site's syntax highlighting uses `[markdown.highlighting]`; see the
+[Zola highlighting documentation](https://www.getzola.org/documentation/content/syntax-highlighting/)
+to choose another theme.
 
 ## How To Customize
 
@@ -60,4 +70,4 @@ Example:
 anpu_date_format = "%e %B %Y"
 ```
 
-The formatting uses the standart `date` filter in Tera. The date format options you can use are listed in the [chrono crate documentation](https://tera.netlify.app/docs/#date).
+The Tera `date` filter uses [Jiff's strftime format](https://docs.rs/jiff/latest/jiff/fmt/strtime/index.html#conversion-specifications).
